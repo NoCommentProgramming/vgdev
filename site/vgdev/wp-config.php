@@ -90,4 +90,16 @@ if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Sets up WordPress vars and included files. */
+define('WP_CACHE', true);
+$currenthost = $_SERVER['HTTP_HOST'];
+$mypos = strpos($currenthost, 'localhost');
+if ($mypos === false) {
+define('WP_HOME','http://xiledesigns.com/vgdev');
+define('WP_SITEURL','http://xiledesigns.com/vgdev');
+} else {
+define('WP_HOME','http://localhost:8888');
+define('WP_SITEURL','http://localhost:8888');
+}
+
+/** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
