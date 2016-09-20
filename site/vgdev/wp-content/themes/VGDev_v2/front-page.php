@@ -1,15 +1,11 @@
 <?php get_header(); ?>
 
-		<!-- hero -->
-		<div class="container" id="hero" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/hero.jpg');">
-			<div class="wrapper">
-				<img src="<?php echo get_template_directory_uri(); ?>/images/vg-dev-logo.png" id="vg-dev-hero-logo" />
-			</div>
-		</div>
-		<!-- / hero -->
+		<!-- slider -->
+		<?php include("sections/frontpage-slider.php"); ?>
+		<!-- / slider -->
 
 		<!-- content -->
-		<div class="container" id="content">
+		<div class="container m-top-100" id="content">
 			<div class="wrapper">
 
 				<div class="box box-shadow">
