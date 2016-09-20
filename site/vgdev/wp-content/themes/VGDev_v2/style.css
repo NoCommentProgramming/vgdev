@@ -21,6 +21,11 @@ Author: Brian Abbott
 	padding: 0;
 	font-family: "Open Sans";
 	outline: none;
+	position: relative;
+	-webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
+  -o-transition: all ease 0.5s;
+  transition: all ease 0.5s;
 }
 
 body {
@@ -110,12 +115,6 @@ p + p {
 	margin: 0 auto;
 	text-align: center;
 }
-.transition {
-	-webkit-transition: all ease 0.5s;
-  -moz-transition: all ease 0.5s;
-  -o-transition: all ease 0.5s;
-  transition: all ease 0.5s;
-}
 .absolute-center {
 	position: relative;
 	top: 50%;
@@ -174,6 +173,67 @@ p + p {
 
 /*////////////////////////////////////////////////////////////////////////////////////////////
 
+	homepage slider
+
+////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+#homepage-slider {
+	overflow: hidden;
+}
+#inner-slider-wrapper {
+	height: inherit;
+}
+#homepage-slider .slide {
+	background-size: cover;
+	background-position: center;
+	height: inherit;
+	display: inline-block;
+}
+.slider-button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 25px!important;
+	color: rgba(255, 255, 255, 0.5);
+	z-index: 9;
+	cursor: pointer;
+	padding: 25px;
+	box-sizing: border-box;
+	background-color: rgba(0, 0, 0, 0.25);
+}
+.slider-button:hover {
+	color: rgba(255, 255, 255, 1.0);
+	background-color: rgba(0, 0, 0, 0.5);
+}
+#left-button {
+	left: 0;
+	border-radius: 0 50px 50px 0;
+}
+#left-button:hover {
+	padding-left: 50px;
+}
+#right-button {
+	right: 0;
+	border-radius: 50px 0 0 50px;
+}
+#right-button:hover {
+	padding-right: 50px;
+}
+.slide .slide-content {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+@media screen and (max-width: 768px) {
+	.slider-button {
+		display: none!important;
+	}
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////
+
 	navigation
 
 ////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -209,10 +269,7 @@ p + p {
 	line-height: 75px;
 	padding: 0 20px;
 	text-transform: uppercase;
-	-webkit-transition: all ease 0.5s;
-  -moz-transition: all ease 0.5s;
-  -o-transition: all ease 0.5s;
-  transition: all ease 0.5s;
+
 }
 #navigation a:hover {
 	color: #51d864;
