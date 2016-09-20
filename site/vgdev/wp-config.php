@@ -27,10 +27,10 @@ include_once __DIR__ . '/wp-config.common.php';
 define('DB_NAME', 'bsabbott_vgdev');
 
 /** MySQL database username */
-define('DB_USER', 'bsabbott_brian');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'bleach21tite');
+define('DB_PASSWORD', 'root');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -90,4 +90,16 @@ if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Sets up WordPress vars and included files. */
+
+define('WP_CACHE', true);
+ $currenthost = $_SERVER['HTTP_HOST'];
+ $mypos = strpos($currenthost, 'localhost');
+ if ($mypos === false) {
+ define('WP_HOME','http://xiledesigns.com/vgdev');
+ define('WP_SITEURL','http://xiledesigns.com/vgdev');
+ } else {
+ define('WP_HOME','http://localhost:8888');
+ define('WP_SITEURL','http://localhost:8888');
+ }
+
 require_once(ABSPATH . 'wp-settings.php');
