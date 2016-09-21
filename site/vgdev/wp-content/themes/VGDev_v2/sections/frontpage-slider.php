@@ -14,14 +14,14 @@
 
 		<?php endif; ?>
 
-		<div id="inner-slider-wrapper" style="margin-left: 0;">
+		<div id="inner-slider-wrapper" class="flex">
 
 		<?php
 			while ( have_rows('slide') ) : the_row();
 				if ( get_sub_field('visible') ) : 
 		?>
 
-			<div class="slide" style="background: <?php the_sub_field('background_color'); ?> url('<?php the_sub_field('background_image'); ?>'); ?>;">
+			<div class="slide border-box" style="background: <?php echo get_sub_field('background_color'); ?> url('<?php the_sub_field('background_image'); ?>');">
 
 				<?php if ( get_sub_field('slide_content') ) : ?>
 
