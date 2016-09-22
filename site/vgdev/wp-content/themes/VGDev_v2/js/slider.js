@@ -29,7 +29,7 @@ setSliderSize();
  * and the slides' widths based off the window width
  */
 function setSliderSize() {
-	$( '#homepage-slider' ).height( window .innerHeight - $( '#navigation' ).height() );
+	$( '#homepage-slider' ).height( window.innerHeight - $( '#navigation' ).height() );
 	$( '#homepage-slider .slide' ).css('min-width', window.innerWidth );
 }
 

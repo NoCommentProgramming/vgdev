@@ -139,6 +139,10 @@ p + p {
 	margin: 50px 0 0 0;
 }
 
+.m-top-neg-50 {
+	margin: -50px 0 0 0;
+}
+
 .header {
 	margin: 0 auto 25px 0;
 }
@@ -457,144 +461,195 @@ p + p {
 
 ////////////////////////////////////////////////////////////////////////////////////////////*/
 
-#game-title-and-genres {
-	flex: 5;
-	margin: 0 25px 0 0;
-	height: 200px;
-}
-#game-title-and-genres h1 {
-	vertical-align: top;
-	margin: 0 0 19px 0!important;
-}
-#game-release-semester {
-	flex: 1;
-	text-align: center;
-	text-transform: uppercase;
-	height: 200px;
-}
-#game-release-semester i {
-	font-size: 25px;
-	line-height: 50px;
-}
-#game-release-semester h3 {
-	line-height: 50px;
+/* game header image */
+#game-header-image {
+	display: block;
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+	height: 500px;
+  box-shadow: inset 0px 100px 100px -20px rgba(0, 0, 0, 0.5);
 }
 
+/* game title */
+#game-title {
+	margin: 0!important;
+}
+
+/* game genres */
+#game-genres {
+	flex: 4;
+	margin: 0 25px 0 0;
+	padding-top: 35px!important;
+}
 #game-genres .genre {
+	flex: 2;
 	padding: 10px;
 	display: inline-block;
 	color: #FFF;
 	text-decoration: none;
 	text-transform: uppercase;
 	text-align: center;
-	margin: 0 15px 0 0;
-	flex: 1;
+	margin: 15px 15px 0 0;
 	white-space: nowrap;
 }
 
+/* game release semester */
+#game-release-semester {
+	flex: 1;
+	text-align: center;
+	text-transform: uppercase;
+	min-width: 225px;
+}
+#game-release-semester i {
+	font-size: 25px;
+	line-height: 42px;
+	margin-right: 15px;
+}
+#game-release-semester h3 {
+	line-height: 42px;
+	display: inline-block;
+}
+
 @media screen and (max-width: 1024px) {
-	#game-header {
+	#game-genres-and-release-semester {
 		display: block!important;
 	}
-	#game-title-and-genres {
+	#game-genres {
 		margin: 0 auto 50px auto;
 	}
 }
 @media screen and (max-width: 768px) {
-	#game-title-and-genres {
-		height: auto;
+	#game-title {
+		text-align: center;
 	}
+}
+@media screen and (max-width: 480px) {
 	#game-genres {
-		display: block!important;
+		display: block;
 	}
 	#game-genres .genre {
-		display: block;
-		width: 100%;
-		margin: 0 auto 15px auto;
-	}
-	#game-genres .genre:last-of-type {
-		margin: 0 auto;
+		margin: 15px 0 0 0;
 	}
 }
 
-.genre.action {
-	background-color: #F29D3D;
-}
-.genre.action-adventure {
-	background-color: #6DDEBE;
-}
-.genre.adventure {
-	background-color: #6DDEDC;
-}
-.genre.artistic {
-	background-color: #B078DE;
-}
-.genre.board {
-	background-color: #A678DE;
-}
-.genre.fantasy {
-	background-color: #7879DE;
-}
+.genre.action { background-color: #F29D3D; }
+.genre.action-adventure { background-color: #6DDEBE; }
+.genre.adventure { background-color: #6DDEDC; }
+.genre.artistic { background-color: #B078DE; }
+.genre.board { background-color: #A678DE; }
+.genre.fantasy { background-color: #7879DE; }
 .genre.fighting {
 	background-color: #C1DE78;
 	color: #333;
 }
-.genre.first-person {
-	background-color: #808080;
-}
-.genre.horror {
-	background-color: #652A9C;
-}
-.genre.mmorpg {
-	background-color: #62BD8F;
-}
-.genre.music {
-	background-color: #DB88CC;
-}
-.genre.party {
-	background-color: #64C7DE;
-}
-.genre.platform {
-	background-color: #64DE8A;
-}
-.genre.role-playing {
-	background-color: #76DE64;
-}
+.genre.first-person { background-color: #808080; }
+.genre.horror { background-color: #652A9C; }
+.genre.mmorpg { background-color: #62BD8F; }
+.genre.music { background-color: #DB88CC; }
+.genre.party { background-color: #64C7DE; }
+.genre.platform { background-color: #64DE8A; }
+.genre.role-playing { background-color: #76DE64; }
 .genre.racing {
 	background-color: #DEDE64;
 	color: #333;
 }
-.genre.shooter {
-	background-color: #DE8264;
+.genre.shooter { background-color: #DE8264; }
+.genre.simulation { background-color: #9ED494; }
+.genre.sports { background-color: #DBDBDB; color: #333; }
+.genre.stealth { background-color: #9E97BF; }
+.genre.strategy { background-color: #BF97A7; }
+.genre.survival { background-color: #97BF9E; }
+.genre.third-person { background-color: #AFBF97; }
+.genre.tower-defense { background-color: #B59660; }
+.genre.trivia { background-color: #60B561; }
+.genre.war { background-color: #B84F4F; }
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////
+
+	gallery
+
+////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#gallery {
+	text-align: center;
 }
-.genre.simulation {
-	background-color: #9ED494;
+#gallery-current {
+	display: block;
+	width: 100%;
+	height: 400px;
+	background-size: cover;
+	background-position: center;
 }
-.genre.sports {
-	background-color: #DBDBDB;
-	color: #333;
+#gallery-options {
+	margin-top: 25px;
+	overflow-x: auto;
+	flex-wrap: nowrap!important;
+	justify-content: flex-start!important;
 }
-.genre.stealth {
-	background-color: #9E97BF;
+#gallery-options .option {
+	margin: 0 25px 0 0;
+	width: 100px;
+	height: 100px;
+	background-size: cover;
+	background-position: center;
+	cursor: pointer;
+	transition: none;
 }
-.genre.strategy {
-	background-color: #BF97A7;
+#gallery-options .option:hover {
+	border: 5px solid #333;
 }
-.genre.survival {
-	background-color: #97BF9E;
+#gallery-options .option:last-of-type {
+	margin: 0;
 }
-.genre.third-person {
-	background-color: #AFBF97;
+#gallery-options .option.current {
+	border: 5px solid #51d864;	
 }
-.genre.tower-defense {
-	background-color: #B59660;
+#expand-gallery-image {
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, 0.25);
+	color: #FFF;
+	float: right;
+	margin: 10px;
+	cursor: pointer;
 }
-.genre.trivia {
-	background-color: #60B561;
+#expand-gallery-image:hover {
+	background-color: rgba(0, 0, 0, 0.5);
 }
-.genre.war {
-	background-color: #B84F4F;
+
+#gallery-expansion {s
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.75);
+	z-index: 999;
 }
+#close-gallery {
+	color: #FFF;
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin: 20px;
+	font-size: 25px;
+	z-index: 9999;
+	cursor: pointer;
+}
+#gallery-slider {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	transform: translateY(-50%);
+	overflow: hidden;
+}
+
 
 
 
