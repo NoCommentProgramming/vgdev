@@ -23,9 +23,3 @@
 	<body>
 
 		<?php include("sections/navigation.php"); ?>
-
-		<!-- header -->
-		<div class="container" id="header">
-			<div class="wrapper"></div>
-		</div>
-		<!-- / header -->

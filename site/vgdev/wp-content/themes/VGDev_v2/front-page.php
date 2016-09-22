@@ -5,7 +5,7 @@
 		<!-- / slider -->
 
 		<!-- content -->
-		<div class="container m-top-100" id="content">
+		<div class="container m-top-100">
 			<div class="wrapper">
 
 				<div class="box box-shadow">
