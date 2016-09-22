@@ -33,41 +33,62 @@
 						</div>
 					</div>
 
-					<!-- game gallery images -->
-					<div id="gallery" class="m-top-50 box box-shadow">
-						<?php
-							if( have_rows('gallery') ):
-								$firstImage = get_field('gallery')[0]['image'];
-								$index = 0;
-						?>
+					<!-- game gallery images and download links -->
+					<div id="gallery-and-download" class="flex m-top-50">
+						<div id="gallery" class="box box-shadow">
+							<?php
+								if( have_rows('gallery') ):
+									$firstImage = get_field('gallery')[0]['image'];
+									$index = 0;
+							?>
 
-						<div id="gallery-current" style="background-image: url('<?php echo $firstImage; ?>');">
-							<i class="fa fa-expand" id="expand-gallery-image" aria-hidden="true" onclick="expandCurrentGalleryImage();"></i>
+							<div id="gallery-current" style="background-image: url('<?php echo $firstImage; ?>');">
+								<i class="fa fa-expand" id="expand-gallery-image" aria-hidden="true" onclick="expandCurrentGalleryImage();"></i>
+							</div>
+
+							<div class="hidden-overflow-x">
+								<div id="gallery-options" class="flex">
+
+								<?php while ( have_rows('gallery') ) : the_row(); ?>
+									<div class="option" id="gallery-image-<?php echo sprintf("%02d", $index); ?>" style="background-image: url('<?php the_sub_field('image'); ?>');" onclick="swapCurrentGalleryImage(this);"></div>
+									<?php $index++; ?>
+								<?php endwhile; ?>
+
+								</div>
+							</div>
+
+							<?php
+								else : ?>
+
+								<h3>No Gallery Images</h3>
+
+							<?php
+								endif;
+							?>
 						</div>
 
-						<div id="gallery-options" class="flex">
-
-						<?php while ( have_rows('gallery') ) : the_row(); ?>
-							<div class="option" id="gallery-image-<?php echo sprintf("%02d", $index); ?>" style="background-image: url('<?php the_sub_field('image'); ?>');" onclick="swapCurrentGalleryImage(this);"></div>
-							<?php $index++; ?>
-						<?php endwhile; ?>
-
+						<div id="download-links" class="box box-shadow flex">
+							<a href="" class="download-button all">Download Everything</a>
+							<a href="" class="download-button">Download Game (Windows)</a>
+							<a href="" class="download-button">Download Game (Mac OS)</a>
+							<a href="" class="download-button">Download Game (Linux)</a>
+							<a href="" class="download-button">Download Audio</a>
+							<a href="" class="download-button">Download Graphics</a>
 						</div>
 
-						<?php
-							else : ?>
-
-							<h3>No Gallery Images</h3>
-
-						<?php
-							endif;
-						?>
 					</div>
 
-				</div>
+				<?php endwhile; ?>
 
-			<?php endwhile; ?>
+			</div>
 
 		</div>
+
+<div id="gallery-expansion">
+	<i class="fa fa-chevron-left slider-button" id="left-button" aria-hidden="true" onclick="prevImage();"></i>
+	<i class="fa fa-chevron-right slider-button" id="right-button" aria-hidden="true" onclick="nextImage();"></i>
+	<i class="fa fa-times" id="close-gallery" aria-hidden="true" onclick="closeGallery();"></i>
+	<div id="current-image"></div>
+</div>
 
 <?php get_footer(); ?>

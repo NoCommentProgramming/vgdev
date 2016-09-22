@@ -27,10 +27,10 @@ include_once __DIR__ . '/wp-config.common.php';
 define('DB_NAME', 'bsabbott_vgdev');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'bsabbott_vgdev');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'root');
+define('DB_PASSWORD', 'bleach21tite');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
