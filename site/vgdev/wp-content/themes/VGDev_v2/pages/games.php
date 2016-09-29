@@ -3,7 +3,13 @@
 <?php get_header(); ?>
 
 <div class="container m-top-100">
-	<div class="wrapper">
+	<div class="wrapper" id="games-page-content">
+
+
+	<div style="margin: 0 0 50px 0;">
+		<input type="text" class="box box-shadow" id="games-search" placeholder="search games" />
+	</div>
+
 
 		<?php 
 			$loop = new WP_Query( 
@@ -17,21 +23,23 @@
 
 		<?php if ($loop->have_posts() ) : ?>
 
-			<div class="box flex">
+			<div class='flex'>
 
-			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
-					<a class="box box-shadow transition <?php echo $customMargin; ?>" style="background-image: url(<?php the_field('image'); ?>);" href="<?php echo get_permalink(); ?>">
-						<div class="details transition">
-							<div class="inner-text">
-								<h2 class="title transition"><?php the_title(); ?></h2>
-								<h4 class="subtitle transition"><?php the_field('subtitle'); ?></h4>
+						<a class="box box-shadow transition game-box flex" href="<?php echo get_permalink(); ?>">
+							<div class="details">
+								<div class="inner-text">
+									<h2 class="title"><?php the_title(); ?></h2>
+									<h4 class="subtitle"><?php the_field( 'subtitle' ); ?></h4>
+									<h4 class="semester"><?php the_field( 'semester' ); ?></h4>
+								</div>
 							</div>
-						</div>
-					</a> 
+							<div class="game-image" style="background-image: url(<?php the_field('hero'); ?>);"></div>
+						</a> 
 
-			<?php endwhile; ?>
-			<?php wp_reset_query(); ?>
+				<?php endwhile; ?>
+				<?php wp_reset_query(); ?>
 
 			</div>
 

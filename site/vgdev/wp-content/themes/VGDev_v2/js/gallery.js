@@ -13,6 +13,7 @@ mc.on('swipeleft', function(e) { nextImage(); })
 $( window ).resize(function() {
 	resizeGalleryExpansion();
 	resizeCurrentGalleryImage();
+	resizeGalleryOptions();
 });
 
 $(document).keyup(function(e) {
@@ -36,7 +37,7 @@ function initializeGallery() {
 	currentGalleryImageId = 'gallery-image-00';
 	document.getElementsByClassName('option')[0].setAttribute('class', 'option current');	
 	numberOfImages = $( '#gallery-options .option' ).length;
-	$( '#gallery-options' ).css('width', (120 * numberOfImages) + 'px');
+	resizeGalleryOptions();
 }
 
 function expandCurrentGalleryImage() {
@@ -50,6 +51,18 @@ function expandCurrentGalleryImage() {
 function resizeGalleryExpansion() {
 	$( '#gallery-expansion' ).css('width', window.innerWidth);
 	$( '#gallery-expansion' ).css('height', window.innerHeight);	
+}
+
+function resizeGalleryOptions() {
+	var style = document.getElementsByClassName('option')[0].currentStyle || window.getComputedStyle(document.getElementsByClassName('option')[0]);
+	var width = style.height;
+	width = width.slice(0, -2);
+
+	console.log(width);
+	var margin = style.marginRight;
+	margin = margin.slice(0, -2);
+	console.log(margin);
+	$( '#gallery-options' ).css('width', (width * numberOfImages) + (margin * (numberOfImages - 1)) + 'px');	
 }
 
 function swapCurrentGalleryImage(image) {

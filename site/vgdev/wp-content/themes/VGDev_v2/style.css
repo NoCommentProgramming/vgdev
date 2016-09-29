@@ -43,7 +43,7 @@ h1, h2, h3, h4, h5, h6 {
 	text-transform: uppercase;	
 }
 h1 {
-	margin: 0 auto 25px auto!important;
+	margin: 0 auto 25px auto;
 }
 p {
 	text-align: justify;
@@ -124,8 +124,14 @@ p + p {
 	margin: 0 auto;
 	text-align: center;
 }
-.absolute-center {
+.relative-center {
 	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);	
+}
+.absolute-center {
+	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -157,6 +163,31 @@ p + p {
 
 .header {
 	margin: 0 auto 25px 0;
+}
+
+@media screen and (max-width: 768px) {
+	.m-top-100 {
+		margin: 50px 0 0 0;
+	}
+	.m-top-50 {
+		margin: 25px 0 0 0;
+	}
+}
+
+.button {
+	display: block;
+	width: 100%;
+	max-width: 200px;
+	color: #FFF;
+	background-color: #4FD4E3;
+	padding: 15px;
+	border-radius: 3px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.button:hover {
+	background-color: #4EB6C2;
 }
 
 
@@ -241,12 +272,6 @@ p + p {
 	list-style-type: none;
 	float: right;
 }
-@media screen and (max-width: 768px) {
-	#navigation ul {
-		display: none;
-		opacity: 0;
-	}
-}
 #navigation ul li {
 	display: inline-block;
 }
@@ -256,7 +281,7 @@ p + p {
 
 	text-decoration: none;
 	line-height: 75px;
-	padding: 0 20px;
+	padding: 0 15px;
 	text-transform: uppercase;
 
 }
@@ -288,6 +313,103 @@ p + p {
 	display: inline-block;
 	margin: 0 auto;
 }
+
+
+
+@media screen and (max-width: 768px) {
+	#navigation ul {
+		display: none;
+		opacity: 0;
+	}
+	#navigation .button-container #login-button {
+		display: none;
+	}
+}
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////
+
+	mobile navigation
+
+////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#mobile-navigation-button {
+	display: none;
+	color: #FFF;
+	padding: 0;
+	line-height: 45px;
+	margin: 15px auto;
+	font-size: 35px;
+	cursor: pointer;
+	transition: none;
+}
+
+@media screen and (max-width: 768px) {
+	#mobile-navigation-button {
+		display: block;
+	}
+}
+
+#mobile-navigation {
+	display: block;
+	position: fixed;
+	left: 0;
+	top: 0;
+	min-width: 250px;
+	max-width: 400px;
+	background-color: #222;
+	z-index: 999;
+  -webkit-box-shadow: 10px 0 5px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 0 5px -2px rgba(0, 0, 0, 0.1);
+  transition: none;
+  opacity: 0;
+}
+#mobile-navigation ul {
+	list-style-type: none;
+}
+#mobile-navigation ul li {
+	display: block;
+}
+#mobile-navigation a {
+	color: #FFF;
+	display: block;
+	text-decoration: none;
+	padding: 25px;
+	text-transform: uppercase;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+#mobile-navigation a:hover {
+	color: #51d864;
+}
+
+#menu-item-141 a {
+  background-color: #51d864;
+  margin: 25px;
+  border: 0!important;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 10px;
+  -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+#menu-item-112 a:hover {
+	color: #FFF!important;
+	background-color: #46B856;	
+}
+
+#navigation-overlay {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 99;
+	transition: none;
+}
+
+
 
 /*////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -466,6 +588,111 @@ p + p {
 	}
 }
 
+/*////////////////////////////////////////////////////////////////////////////////////////////
+
+	all games page
+
+////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#games-search {
+	font-size: 20px;
+	border: none;
+	padding: 25px;
+	margin-right: 25px;
+	flex: 5;
+}
+
+#additional-filters {
+	font-size: 20px;
+	background-color: #51d864;
+	color: #FFF;
+	cursor: pointer;
+	height: 77px;
+	width: 77px;
+	text-align: center;
+	line-height: 77px;
+}
+#additional-filters:hover {
+	background-color: #46B856;
+}
+
+.game-box {
+	margin: 0 25px 50px 0;
+	color: #FFF;
+	text-decoration: none;
+	height: 250px;
+	padding: 0!important;
+	transition: none;
+	flex: 1;
+	min-width: 45%;
+}
+.game-box.even {
+	margin: 0 0 50px 0;
+}
+.game-box.last {
+	margin: 0;
+}
+.game-box:last-of-type {
+	margin: 0 auto;
+}
+
+.game-box .details {
+	background-color: #333;
+	width: 50%;
+	height: 100%;
+	padding: 25px;
+}
+.game-box .details .inner-text {
+	height: inherit;
+}
+.game-box .details .inner-text .semester {
+	position: absolute;
+	bottom: 0;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.game-box .game-image {
+	background-size: cover;
+	background-position: center;
+	height: 100%;
+	width: 50%;
+}
+
+#no-results {
+	text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+	.game-box {
+		display: block;
+		width: 100%;
+		flex: 100%;
+		margin: 0 auto 25px 0!important;
+		height: auto;
+	}
+	.game-box:last-of-type {
+		margin: 0 auto!important;
+	}
+	.game-box .details {
+		width: 100%;
+		height: auto;
+		z-index: 3;
+		border-radius: 3px 3px 0 0;
+	}
+	.game-box .game-image {
+		width: 100%;
+		height: 150px;
+		position: relative;
+		border-radius: 3px;
+	}
+	.game-box .details .inner-text .semester {
+		position: relative;
+	}
+	#games-search {
+		padding: 15px!important;
+	}
+}
+
 
 /*////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -486,6 +713,17 @@ p + p {
 /* game title */
 #game-title {
 	margin: 0!important;
+	display: inline-block;
+}
+#game-subtitle {
+	float: right;
+	color: rgba(0, 0, 0, 0.5);
+	line-height: 39px;
+	display: inline-block;
+}
+
+#game-genres-and-release-semester {
+	align-items: stretch;
 }
 
 /* game genres */
@@ -511,7 +749,7 @@ p + p {
 	flex: 1;
 	text-align: center;
 	text-transform: uppercase;
-	min-width: 225px;
+	min-height: 144px;
 }
 #game-release-semester i {
 	font-size: 25px;
@@ -523,6 +761,13 @@ p + p {
 	display: inline-block;
 }
 
+@media screen and (max-width: 1366px) and (min-width: 1025px) {
+	#game-release-semester i {
+		font-size: 25px;
+		line-height: 42px;
+		margin-right: auto;
+	}
+}
 @media screen and (max-width: 1024px) {
 	#game-header-image {
 		height: 300px;
@@ -531,21 +776,33 @@ p + p {
 		display: block!important;
 	}
 	#game-genres {
-		padding-top: 10px!important;
 		margin: 0 auto 50px auto;
 	}
 }
 @media screen and (max-width: 768px) {
 	#game-title {
 		text-align: center;
+		display: block;
+	}
+	#game-subtitle {
+		float: none;
+		text-align: center;
+		display: block;
+	}
+	#game-genres {
+		margin: 0 auto 25px auto;
 	}
 }
 @media screen and (max-width: 480px) {
 	#game-genres {
 		display: block;
+		padding-top: 10px!important;
 	}
 	#game-genres .genre {
 		margin: 15px 0 0 0;
+	}
+	#game-subtitle {
+		font-size: 20px;
 	}
 }
 
@@ -594,23 +851,9 @@ p + p {
 }
 
 #download-links {
-	flex-direction: vertical;
 }
 
-.download-button {
-	background-color: #5CCFD1;
-	display: block;
-	color: #FFF;
-	text-transform: uppercase;
-	text-align: center;
-	width: 100%;
-	height: auto;
-	flex: 1;
-}
-.download-button.all {
-	flex: 2;
 
-}
 
 
 /*////////////////////////////////////////////////////////////////////////////////////////////
@@ -667,6 +910,22 @@ p + p {
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
+@media screen and (max-width: 768px) {
+	#gallery-current {
+		height: 300px;
+	}
+}
+@media screen and (max-width: 480px) {
+	#gallery-current {
+		height: 250px;
+	}
+	#gallery-options .option {
+		margin: 0 15px 0 0;
+		width: 50px;
+		height: 50px;
+	}
+}
+
 /* gallery pop up expansion */
 #gallery-expansion {
 	display: none;
@@ -702,6 +961,114 @@ p + p {
 	width: 100%;
 }
 
+/*////////////////////////////////////////////////////////////////////////////////////////////
+
+	wp user manager
+
+////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#login {
+	max-width: 450px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#wpum_loginform .input {
+	padding: 15px;
+	display: block;
+	width: 100%;
+	border: 1px solid #CCC;
+	border-radius: 3px;
+	font-size: 15px;
+}
+#wpum_loginform .login-remember {
+	margin-top: 10px;
+	text-align: right;
+}
+#wpum_loginformwp-submit {
+	display: block;
+	padding: 15px;
+	font-size: 15px;
+	width: 100%;
+	max-width: 250px;
+	border: 0;
+	border-radius: 3px;
+	cursor: pointer;
+	background-color: #51d864;
+	color: #FFF;
+	text-transform: uppercase;
+}
+#wpum_loginformwp-submit:hover {
+	background-color: #46B856;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////
+
+	members
+
+////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#members-search {
+	font-size: 20px;
+	border: none;
+	padding: 25px;
+	flex: 5;
+}
+
+#all-members {
+}
+
+.member-box {
+	margin: 0 25px 50px 0;
+	padding: 0;
+	transition: none;
+	flex: 1;
+	min-width: 45%;
+	text-decoration: none;
+	color: #333;
+}
+.member-box.even {
+	margin: 0 0 50px 0;
+}
+.member-box.last {
+	margin: 0;
+}
+.member-box:last-of-type {
+	margin: 0 auto;
+}
 
 
-
+.member-box img {
+	display: inline-block;
+	margin: 0;
+	max-width: 100px;
+}
+.member-box span {
+	display: inline-block;
+	float: right;
+	line-height: 100px;
+	text-align: center;
+	height: 100px;
+	margin: 0;
+	flex: 1;
+	padding: 0 25px;
+	min-width: 200px;
+}
+@media screen and (max-width: 768px) {
+	#all-members {
+		display: block;
+	}
+	.member-box {
+		width: 100%;
+	}
+	.member-box.even,
+	.member-box {
+		margin: 0 0 25px 0;
+	}
+}
+@media screen and (max-width: 480px) {
+	.member-box span {
+		min-width: 175px;
+		padding: 0 10px;
+	}
+}

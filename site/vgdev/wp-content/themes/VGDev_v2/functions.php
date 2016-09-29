@@ -1,11 +1,5 @@
 <?php
 
-	// add theme support
-	if (function_exists('add_theme_support')) {
-	    // Add Menu Support
-	    add_theme_support('menus');
-	}
-
 	// main navigation
 	function navigation($input) {
 		if ($input == 'main' ||
@@ -15,13 +9,13 @@
 
 			wp_nav_menu(
 			array(
-				'theme_location'  => $input + '-menu',
-				'menu'            => '',
-				'container'       => '',
+				'theme_location'  => $input,
+				'menu'            => $input,
+				'container'       => 'div',
 				'container_class' => '',
 				'container_id'    => '',
-				'menu_class'      => $input + '_navigation',
-				'menu_id'         => '',
+				'menu_class'      => $input,
+				'menu_id'         => $input,
 				'echo'            => true,
 				'fallback_cb'     => 'wp_page_menu',
 				'before'          => '',
@@ -37,16 +31,17 @@
 	}
 
 	// register custom menus
-	if (function_exists('register_nav_menus')) {
+	function register_my_menus() {
 		register_nav_menus(
 			array(
-			  'main_menu' => __( 'Main Menu', 'cake' ), // main navigation
-			  'secondary_menu' => __( 'Secondary Menu', 'cake' ), // secondary navigation
-			  'mobile_menu' => __( 'Mobile Menu', 'cake' ), // mobile navigation
-			  'footer_menu' => __( 'Footer Menu', 'cake' ) // footer navigation
+			  'main' => __( 'Main Menu' ), // main navigation
+			  'secondary' => __( 'Secondary Menu' ), // secondary navigation
+			  'mobile' => __( 'Mobile Menu' ), // mobile navigation
+			  'footer' => __( 'Footer Menu' ) // footer navigation
 			)
 		);
 	}
+	add_action( 'init', 'register_my_menus' );
 
 	// converts ACF date into 
 	function convertDate($date) {

@@ -27,7 +27,7 @@ include_once __DIR__ . '/wp-config.common.php';
 define('DB_NAME', 'bsabbott_vgdev');
 
 /** MySQL database username */
-define('DB_USER', 'bsabbott_vgdev');
+define('DB_USER', 'bsabbott_brian');
 
 /** MySQL database password */
 define('DB_PASSWORD', 'bleach21tite');

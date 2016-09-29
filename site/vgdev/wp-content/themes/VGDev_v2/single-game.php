@@ -11,6 +11,9 @@
 				<!-- game title -->
 					<div class="box box-shadow m-top-neg-50">
 							<h1 id="game-title"><?php the_title(); ?></h1>
+							<?php if (get_field('subtitle')): ?>
+								<h2 id="game-subtitle"><?php the_field('subtitle'); ?></h2>
+							<?php endif; ?>
 					</div>
 
 				<!-- game genres and release semester -->
@@ -28,8 +31,10 @@
 							?>
 						</div>
 						<div id="game-release-semester" class="box box-shadow">
-							<i class="fa fa-calendar" aria-hidden="true"></i>
-							<h3><?php the_field( 'semester' ); ?></h3>
+							<div class="absolute-center">
+								<i class="fa fa-calendar" aria-hidden="true"></i>
+								<h3><?php the_field( 'semester' ); ?></h3>
+							</div>
 						</div>
 					</div>
 
@@ -67,13 +72,10 @@
 							?>
 						</div>
 
-						<div id="download-links" class="box box-shadow flex">
-							<a href="" class="download-button all">Download Everything</a>
-							<a href="" class="download-button">Download Game (Windows)</a>
-							<a href="" class="download-button">Download Game (Mac OS)</a>
-							<a href="" class="download-button">Download Game (Linux)</a>
-							<a href="" class="download-button">Download Audio</a>
-							<a href="" class="download-button">Download Graphics</a>
+						<div id="download-links" class="box box-shadow">
+
+
+
 						</div>
 
 					</div>
