@@ -1,66 +1,110 @@
-<div class="container">
-	<div class="wrapper upcoming-events-section">
-
-	<h1 class="section-title">Recent Games</h1>
+<div class="container m-top-100">
+	<div class="wrapper" id="games-page-content">
+		<h1>Featured Games</h1>
 
 		<?php 
-			$count = 0;
-			$loop = new WP_Query( 
+			$current_semester = '';
+			$loop = new WP_Query(
 				array( 
 					'post_type' => 'game', 
-					'posts_per_page' => 3,
-					'order' => 'DES',
-					'orderby' => 'date'
+					'posts_per_page' => 4,
+			    'meta_query' => array(
+			    	'the_year' => array(
+	        		'key' => 'year',
+	        		'compare' => 'EXISTS'
+	        	),
+	        	'is_featured' => array(
+	        		'key' => 'featured',
+	        		'value' => true,
+	        	)
+			    ),
+			    'meta_key' => 'semester',
+					'orderby' => array(
+						'the_year' => 'DESC',
+						'semester' => 'ASC'
+					)
 				) 
 			); 
 		?>
 
-		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+		<?php if ($loop->have_posts() ) : ?>
 
-			<?php if ($count < 1) : ?>
+			<div class='flex'>
 
-				<a class="event main box-shadow flex transition" href="<?php echo get_permalink(); ?>">
-					<div class="image transition" style="background-image: url(<?php the_field('hero'); ?>);"></div>
-					<div class="details transition">
-						<div class="inner-text">
-							<div class="inner-box">					
-								<h2 class="title transition"><?php the_title(); ?></h2>
-								<h4 class="subtitle transition"><?php the_field('subtitle'); ?></h4>
+				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+					<div class="flex-1-container game">
+						<a class="box box-shadow transition game-box flex" href="<?php echo get_permalink(); ?>">
+							<div class="details">
+								<div class="inner-text">
+									<h2 class="title"><?php the_title(); ?></h2>
+									<h4 class="subtitle"><?php the_field( 'subtitle' ); ?></h4>
+									<h4 class="semester"><?php the_field( 'semester' ); ?> <?php the_field( 'year' ); ?></h4>
+								</div>
 							</div>
-						</div>
+							<div class="game-image" style="background-image: url(<?php the_field('hero'); ?>);"></div>
+						</a> 
 					</div>
-				</a>
 
-				<?php $count++; ?>
+				<?php endwhile; ?>
+				<?php wp_reset_query(); ?>
 
-			<?php endif; ?>
+			</div>
 
-		<?php endwhile; ?>
-		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+		<?php endif; ?>
 
-			<?php if ($count >= 2) : ?>
+		<h1 class="m-top-100">Recent Games</h1>
 
-				<?php if ($count < 3) : ?>
-					<div class="sub-events flex">
-				<?php endif; ?>
-					<a class="event sub box-shadow transition" style="background-image: url(<?php the_field('hero'); ?>);" href="<?php echo get_permalink(); ?>">
-						<div class="details transition">
-							<div class="inner-text">
-								<h2 class="title transition"><?php the_title(); ?></h2>
-								<h4 class="subtitle transition"><?php the_field('subtitle'); ?></h4>
+		<?php 
+			$current_semester = '';
+			$loop = new WP_Query(
+				array( 
+					'post_type' => 'game', 
+					'posts_per_page' => 4,
+			    'meta_query' => array(
+			    	'the_year' => array(
+	        		'key' => 'year',
+	        		'compare' => 'EXISTS'
+	        	),
+	        	'is_featured' => array(
+	        		'key' => 'featured',
+	        		'value' => 0,
+	        	)
+			    ),
+			    'meta_key' => 'semester',
+					'orderby' => array(
+						'the_year' => 'DESC',
+						'semester' => 'ASC'
+					)
+				) 
+			); 
+		?>
+
+		<?php if ($loop->have_posts() ) : ?>
+
+			<div class='flex'>
+
+				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+					<div class="flex-1-container game">
+						<a class="box box-shadow transition game-box flex" href="<?php echo get_permalink(); ?>">
+							<div class="details">
+								<div class="inner-text">
+									<h2 class="title"><?php the_title(); ?></h2>
+									<h4 class="subtitle"><?php the_field( 'subtitle' ); ?></h4>
+									<h4 class="semester"><?php the_field( 'semester' ); ?> <?php the_field( 'year' ); ?></h4>
+								</div>
 							</div>
-						</div>
-					</a>
-				<?php if ($count > 4) : ?>
+							<div class="game-image" style="background-image: url(<?php the_field('hero'); ?>);"></div>
+						</a> 
 					</div>
-				<?php endif; ?>
 
-				<?php $count++; ?>
-			<?php else: ?>
-				<?php $count++; ?>
-			<?php endif; ?>
+				<?php endwhile; ?>
+				<?php wp_reset_query(); ?>
 
-		<?php endwhile; wp_reset_query(); ?>
+			</div>
+
+		<?php endif; ?>
+
+		<a class="button box-shadow all-games" href="games"><h2>See All Games</h2></a>
 
 	</div>
 </div>
